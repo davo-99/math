@@ -1,9 +1,9 @@
 const Matrix = (() => {
     
-    const _isArray = matrix => 
+    const _isArray = matrix =>
         Array.isArray(matrix);
         
-    const _isMatrix = matrix => 
+    const _isMatrix = matrix =>
         _isArray(matrix) && matrix.every(array => _isArray(array));
         
     const _isSquare = matrix =>
@@ -47,5 +47,3 @@ const Matrix = (() => {
     };
 
 })();
-
-module.exports = Matrix;
