@@ -20,7 +20,7 @@ const Matrix = (() => {
         let det = 1;
         for (let i = 0; i < length; i++)
             det *= matrix[i][i];
-        return (det + 0, det); // -0 is an undesirable result
+        return (det += 0, det); // -0 is an undesirable result
     };
     
     const _gaussElimination = (row, matrix, index) => {
