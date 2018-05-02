@@ -23,7 +23,8 @@ const Matrix = (() => {
         return (det += 0, det); // -0 is an undesirable result
     };
     
-    const _gaussElimination = (row, matrix, index) => {
+    const _gaussElimination = (matrix, index) => {
+        const row = matrix[index];
         const length = matrix.length;
         for (let i = index + 1; i < length; i++) {
             let k = -(matrix[i][index] / row[index]);
@@ -37,7 +38,7 @@ const Matrix = (() => {
         if (!_isValidMatrix(matrix)) return null;
         const length = matrix.length;
         for (let i = 0; i < length - 1; i++)
-            matrix = _gaussElimination(matrix[i], matrix, i);
+            matrix = _gaussElimination(matrix, i);
         return _diagonal(matrix);
     };
     
