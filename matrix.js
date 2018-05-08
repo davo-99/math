@@ -1,9 +1,9 @@
 const Matrix = (() => {
     "use strict";
-
+    
     const _isArray = matrix => Array.isArray(matrix);
         
-    const _isMatrix = matrix =>
+    const _isMatrix = matrix => 
         _isArray(matrix) && matrix.every(array => _isArray(array));
         
     const _isSquare = matrix =>
@@ -16,30 +16,71 @@ const Matrix = (() => {
     };
     
     const _diagonal = matrix => {
-        const length = matrix.length;
         let det = 1;
-        for (let i = 0; i < length; i++)
+        for (let i = 0; i < matrix.length; i++) {
             det *= matrix[i][i];
+        }
         return (det += 0, det); // -0 is an undesirable result
     };
-    
+
+    const _swapRows = (matrix, i, j) => {
+        // console.log(`Swapping the ${i+1} and ${j+1} rows`);
+        [matrix[i], matrix[j]] = [matrix[j], matrix[i]];
+        return matrix;
+    };
+
+    const _sortMatrix = (matrix, counter) => {
+        const length = matrix.length;
+        let countedNoNZeros = 0;
+        let j = 0;
+        for (let i = 0; i < length - 1; i++) {
+            if (matrix[i][j] !== 0) {
+                countedNoNZeros++;
+                if (countedNoNZeros === length - 1) {
+                    j++;
+                    i = -1;
+                }
+                continue;
+            }
+            let index = i + 1;
+            while (index < length) {
+                if (matrix[index][j] !== 0) break;
+                index++;
+            }
+            if (index === length) index--;
+            if (matrix[index][j] !== 0) {
+                matrix = _swapRows(matrix, i, index);
+                counter.swapped++;
+                continue;
+            }
+            if (j === length) break;
+            j++;
+            i--;
+        }
+        // console.log(countedNoNZeros);
+        return matrix;
+    };
+
     const _gaussElimination = (matrix, index) => {
         const row = matrix[index];
         const length = matrix.length;
         for (let i = index + 1; i < length; i++) {
+            if (row[index] === 0) continue;
             let k = -(matrix[i][index] / row[index]);
             for (let j = index + 1; j < length; j++)
                 matrix[i][j] += k * row[j];
+            matrix[i][index] = 0;
         }
         return matrix;
     };
       
     const countDeterminant = matrix => {
         if (!_isValidMatrix(matrix)) return null;
-        const length = matrix.length;
-        for (let i = 0; i < length - 1; i++)
+        const counter = { swapped: 0 };
+        matrix = _sortMatrix(matrix, counter);
+        for (let i = 0; i < matrix.length - 1; i++)
             matrix = _gaussElimination(matrix, i);
-        return _diagonal(matrix);
+        return _diagonal(matrix) * Math.pow(-1, counter.swapped) + 0; // -0 is an undesirable result
     };
     
     return {
