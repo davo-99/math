@@ -57,7 +57,6 @@ const Matrix = (() => {
             j++;
             i--;
         }
-        // console.log(countedNoNZeros);
         return matrix;
     };
 
@@ -80,7 +79,8 @@ const Matrix = (() => {
         matrix = _sortMatrix(matrix, counter);
         for (let i = 0; i < matrix.length - 1; i++)
             matrix = _gaussElimination(matrix, i);
-        return _diagonal(matrix) * Math.pow(-1, counter.swapped) + 0; // -0 is an undesirable result
+        const result = Math.trunc(Math.floor(_diagonal(matrix)) * Math.pow(-1, counter.swapped) + 0); // -0 is an undesirable result
+        return result;
     };
     
     return {
