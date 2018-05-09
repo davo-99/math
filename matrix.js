@@ -79,7 +79,7 @@ const Matrix = (() => {
         matrix = _sortMatrix(matrix, counter);
         for (let i = 0; i < matrix.length - 1; i++)
             matrix = _gaussElimination(matrix, i);
-        const result = Math.trunc(Math.floor(_diagonal(matrix)) * Math.pow(-1, counter.swapped) + 0); // -0 is an undesirable result
+        let result = Math.trunc(Math.floor(_diagonal(matrix)) * Math.pow(-1, counter.swapped) + 0); // -0 is an undesirable result
         return result;
     };
     
