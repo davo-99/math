@@ -75,7 +75,7 @@ const Matrix = (() => {
       
     const countDeterminant = matrix => {
         if (!_isValidMatrix(matrix)) return null;
-        const counter = { swapped: 0 };
+        const counter = { swapped: 0 }; // for reference
         matrix = _sortMatrix(matrix, counter);
         for (let i = 0; i < matrix.length - 1; i++)
             matrix = _gaussElimination(matrix, i);
