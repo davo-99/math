@@ -13,8 +13,8 @@ void GaussElimination(double[][MAX], int, int);
 double Determinant(double[][MAX], int);
 
 int main() {
-	int n; double matrix[10][10];
-
+	int n;
+	double matrix[10][10];
 	cout << "Nermucir matrici chapsy\n";
 	do { cin >> n; } while (n < 2 || n > 10);
 	cout << "Nermucir matrici tvery\n";
