@@ -15,6 +15,8 @@ const Matrix = (() => {
         return true;
     };
     
+    const _fix = number => +number.toFixed(10);
+    
     const _diagonal = matrix => {
         let det = 1;
         for (let i = 0; i < matrix.length; i++) {
@@ -79,8 +81,8 @@ const Matrix = (() => {
         matrix = _sortMatrix(matrix, counter);
         for (let i = 0; i < matrix.length - 1; i++)
             matrix = _gaussElimination(matrix, i);
-        let result = Math.trunc(Math.floor(_diagonal(matrix)) * Math.pow(-1, counter.swapped) + 0); // -0 is an undesirable result
-        return result;
+        let result = Math.floor(_diagonal(matrix)) * Math.pow(-1, counter.swapped) + 0; // -0 is an undesirable result
+        return _fix(result);
     };
     
     return {
