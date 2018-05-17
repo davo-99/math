@@ -19,9 +19,8 @@ const Matrix = (() => {
     
     const _diagonal = matrix => {
         let det = 1;
-        for (let i = 0; i < matrix.length; i++) {
+        for (let i = 0; i < matrix.length; i++)
             det *= matrix[i][i];
-        }
         return (det += 0, det); // -0 is an undesirable result
     };
 
