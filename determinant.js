@@ -76,11 +76,11 @@ const Matrix = (() => {
       
     const countDeterminant = matrix => {
         if (!_isValidMatrix(matrix)) return null;
-        const counter = { swapped: 0 }; // for reference
+        const counter = { swapped: 0 };
         matrix = _sortMatrix(matrix, counter);
         for (let i = 0; i < matrix.length - 1; i++)
             matrix = _gaussElimination(matrix, i);
-        let result = Math.floor(_diagonal(matrix)) * Math.pow(-1, counter.swapped) + 0; // -0 is an undesirable result
+        let result = Math.floor(_diagonal(matrix)) * Math.pow(-1, counter.swapped) + 0;
         return _fix(result);
     };
     
