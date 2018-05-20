@@ -24,11 +24,8 @@ const Matrix = (() => {
         return (det += 0, det); // -0 is an undesirable result
     };
 
-    const _swapRows = (matrix, i, j) => {
-        // console.log(`Swapping the ${i+1} and ${j+1} rows`);
+    const _swapRows = (matrix, i, j) =>
         [matrix[i], matrix[j]] = [matrix[j], matrix[i]];
-        return matrix;
-    };
 
     const _sortMatrix = (matrix, counter) => {
         const length = matrix.length;
@@ -50,7 +47,7 @@ const Matrix = (() => {
             }
             if (index === length) index--;
             if (matrix[index][j] !== 0) {
-                matrix = _swapRows(matrix, i, index);
+                _swapRows(matrix, i, index);
                 counter.swapped++;
                 continue;
             }
@@ -80,7 +77,7 @@ const Matrix = (() => {
         matrix = _sortMatrix(matrix, counter);
         for (let i = 0; i < matrix.length - 1; i++)
             matrix = _gaussElimination(matrix, i);
-        let result = Math.floor(_diagonal(matrix)) * Math.pow(-1, counter.swapped) + 0;
+        let result = Math.floor(_diagonal(matrix)) * ((-1) ** counter.swapped) + 0;
         return _fix(result);
     };
     
