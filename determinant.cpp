@@ -21,17 +21,16 @@ int main() {
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++)
 			cin >> matrix[i][j];
-	cout << Determinant(matrix, 4) << endl;
+	cout << Determinant(matrix, n) << endl;
 	system("pause");
 	return 0;
 }
 
 void SwapRows(double mat[][MAX], int i, int j, int n) {
-	// cout << "Swapping the " << i+1 << " and " << j+1 << " rows" << endl;
 	for (int k = 0; k < n; k++) {
-		double temp = mat[i][k];
-		mat[i][k] = mat[j][k];
-		mat[j][k] = temp;
+		double temp = matrix[i][k];
+		matrix[i][k] = matrix[j][k];
+		matrix[j][k] = temp;
 	}
 }
 
