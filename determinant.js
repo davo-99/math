@@ -55,9 +55,8 @@ const Matrix = (() => {
                 for (let i = h + 1; i < length; i++) {
                     let f = matrix[i][k] / matrix[h][k];
                     matrix[i][k] = 0;
-                    for (let j = k + 1; j < length; j++) {
+                    for (let j = k + 1; j < length; j++)
                         matrix[i][j] -= matrix[h][j] * f;
-                    }
                 }
                 h++;
             }
