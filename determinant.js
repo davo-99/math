@@ -68,7 +68,7 @@ const Matrix = (() => {
         if (_isAllZero(matrix)) return 0;
         const counter = { swapped: 0 };
         matrix = _gaussElimination(matrix, counter);
-        let result = Math.floor(_diagonal(matrix)) * ((-1) ** counter.swapped) + 0;
+        let result = _diagonal(matrix) * ((-1) ** counter.swapped) + 0;
         return _fix(result);
     };
     
