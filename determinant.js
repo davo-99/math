@@ -37,41 +37,10 @@ const Matrix = (() => {
             det *= matrix[i][i];
         return (det += 0, det); // -0 is an undesirable result
     };
-
+    
     const _swapRows = (matrix, i, j) =>
         [matrix[i], matrix[j]] = [matrix[j], matrix[i]];
-
-//     const _sortMatrix = (matrix, counter) => {
-//         const length = matrix.length;
-//         let countedNoNZeros = 0;
-//         let j = 0;
-//         for (let i = 0; i < length - 1; i++) {
-//             if (matrix[i][j] !== 0) {
-//                 countedNoNZeros++;
-//                 if (countedNoNZeros === length - 1) {
-//                     j++;
-//                     i = -1;
-//                 }
-//                 continue;
-//             }
-//             let index = i + 1;
-//             while (index < length) {
-//                 if (matrix[index][j] !== 0) break;
-//                 index++;
-//             }
-//             if (index === length) index--;
-//             if (matrix[index][j] !== 0) {
-//                 _swapRows(matrix, i, index);
-//                 counter.swapped++;
-//                 continue;
-//             }
-//             if (j === length) break;
-//             j++;
-//             i--;
-//         }
-//         return matrix;
-//     };
-
+    
     const _gaussElimination = (matrix, counter) => {
         const length = matrix.length;
         for (let h = 0, k = 0; h < length && k < length; k++) {
@@ -93,7 +62,7 @@ const Matrix = (() => {
         }
         return matrix;
     };
-      
+    
     const countDeterminant = matrix => {
         if (!_isValidMatrix(matrix)) return null;
         if (_isAllZero(matrix)) return 0;
