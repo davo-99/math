@@ -15,9 +15,9 @@ const Matrix = (() => {
         return true;
     };
     
-    const _isAllZero = matrix => matrix.every(row => !row[0]);
-    
     const _fix = number => +number.toFixed(10);
+    
+    const _isAllZero = matrix => matrix.every(row => !row[0]);
     
     const _argmax = (matrix, h,  k) => {
         const length = matrix.length;
