@@ -20,10 +20,11 @@ int main() {
 	double matrix[20][20];
 	cout << "Input matrix dimension\n";
 	do { cin >> n; } while (n < 2 || n > 20);
-	cout << "Set matrix numbers\n";
+	cout << "Input matrix numbers\n";
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++)
 			cin >> matrix[i][j];
+	PrintMatrix(matrix, n);
 	cout << setprecision(5) << fixed << "determinant = " << Determinant(matrix, n) << endl;
 	system("pause");
 	return 0;
@@ -97,6 +98,5 @@ double Determinant(double matrix[][MAX], int n) {
 	if (IsAllZero(matrix, n)) return 0;
 	int swapCount = GaussElimination(matrix, n);
 	double result = Diagonal(matrix, n) * pow(-1, swapCount) + 0;
-	PrintMatrix(matrix, n);
 	return result;
 }
