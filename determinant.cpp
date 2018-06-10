@@ -1,4 +1,3 @@
-// #include "stdafx.h"
 #include <iostream>
 #include <iomanip>
 #include <cmath>
@@ -18,7 +17,7 @@ double Determinant(double[][MAX], int);
 int main() {
 	int n;
 	double matrix[20][20];
-	cout << "Input matrix dimension\n";
+	cout << "Set matrix dimension\n";
 	do { cin >> n; } while (n < 2 || n > 20);
 	cout << "Input matrix numbers\n";
 	for (int i = 0; i < n; i++)
@@ -26,8 +25,7 @@ int main() {
 			cin >> matrix[i][j];
 	PrintMatrix(matrix, n);
 	cout << setprecision(5) << fixed << "determinant = " << Determinant(matrix, n) << endl;
-	system("pause");
-	return 0;
+	cin.get();
 }
 
 void PrintMatrix(double matrix[][MAX], int n) {
