@@ -18,7 +18,7 @@ int main() {
 	int n;
 	double matrix[20][20];
 	cout << "Set matrix dimension\n";
-	do { cin >> n; } while (n < 2 || n > 20);
+	do cin >> n; while (n < 2 || n > 20);
 	cout << "Input matrix numbers\n";
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++)
@@ -82,9 +82,8 @@ int GaussElimination(double matrix[][MAX], int n) {
 			for (int i = h + 1; i < n; i++) {
 				double f = matrix[i][k] / matrix[h][k];
 				matrix[i][k] = 0;
-				for (int j = k + 1; j < n; j++) {
+				for (int j = k + 1; j < n; j++)
 					matrix[i][j] -= matrix[h][j] * f;
-				}
 			}
 			h++;
 		}
