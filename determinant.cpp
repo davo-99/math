@@ -15,6 +15,7 @@ int GaussElimination(double[][MAX], int);
 double Determinant(double[][MAX], int);
 
 int main() {
+	ios::sync_with_stdio(false);
 	int n;
 	double matrix[20][20];
 	cout << "Set matrix dimension\n";
@@ -29,11 +30,9 @@ int main() {
 }
 
 void PrintMatrix(double matrix[][MAX], int n) {
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++)
-			cout << matrix[i][j] << '\t';
-		cout << endl;
-	}
+			cout << matrix[i][j] << "\t\n"[n-j==1];
 }
 
 bool IsAllZero(double matrix[][MAX], int n) {
