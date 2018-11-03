@@ -15,12 +15,11 @@ const Matrix = (() => {
         return true;
     }
     
-    const _isAllZero = matrix =>
-        matrix.every(row => !row[0]);
+    const _isAllZero = matrix => matrix.every(row => !row[0]);
     
     const _fix = number => +number.toFixed(10);
     
-    const _diagonal = matrix => 
+    const _diagonal = matrix =>
         matrix.reduce((a, r, i) => a * r[i], 1);
 
     const _swapRows = (matrix, i, j) =>
@@ -59,7 +58,7 @@ const Matrix = (() => {
         if (_isAllZero(matrix)) return 0;
         const counter = { swapped: 0 };
         _gaussElimination(matrix, counter);
-        const result = _diagonal(matrix) * (-1) ** counter.swapped + 0;
+        const result = _diagonal(matrix) * (-1)**counter.swapped + 0;
         return _fix(result);
     };
     
