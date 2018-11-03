@@ -38,13 +38,13 @@ const Matrix = (() => {
     const _gaussElimination = (matrix, counter) => {
         const length = matrix.length;
         for (let h = 0, k = 0; h < length && k < length; k++) {
-            let i_max = _argmax(matrix, h, k);
+            const i_max = _argmax(matrix, h, k);
             if (matrix[i_max][k] === 0) continue;
             else {
                 if (i_max !== h)
                     (_swapRows(matrix, h, i_max), counter.swapped++);
                 for (let i = h + 1; i < length; i++) {
-                    let f = matrix[i][k] / matrix[h][k];
+                    const f = matrix[i][k] / matrix[h][k];
                     matrix[i][k] = 0;
                     for (let j = k + 1; j < length; j++)
                         matrix[i][j] -= matrix[h][j] * f;
@@ -52,14 +52,13 @@ const Matrix = (() => {
                 h++;
             }
         }
-        return matrix;
     };
     
     const countDeterminant = matrix => {
         if (!_isValidMatrix(matrix)) return null;
         if (_isAllZero(matrix)) return 0;
         const counter = { swapped: 0 };
-        matrix = _gaussElimination(matrix, counter);
+        _gaussElimination(matrix, counter);
         const result = _diagonal(matrix) * (-1) ** counter.swapped + 0;
         return _fix(result);
     };
