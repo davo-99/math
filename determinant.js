@@ -13,7 +13,7 @@ const Matrix = (() => {
         if (!_isMatrix(matrix)) throw new Error('Must be a matrix');
         if (!_isSquare(matrix)) throw new Error('Must be a square matrix');
         return true;
-    };
+    }
     
     const _isAllZero = matrix =>
         matrix.every(row => !row[0]);
@@ -33,7 +33,7 @@ const Matrix = (() => {
             if (Math.abs(matrix[i][k]) > max)
                 (max = Math.abs(matrix[i][k]), index = i);
         return index;
-    };
+    }
     
     const _gaussElimination = (matrix, counter) => {
         const length = matrix.length;
@@ -52,7 +52,7 @@ const Matrix = (() => {
                 h++;
             }
         }
-    };
+    }
     
     const countDeterminant = matrix => {
         if (!_isValidMatrix(matrix)) return null;
