@@ -10,8 +10,8 @@ const Matrix = (() => {
         matrix.every(array => array.length === matrix.length);
     
     const _isValidMatrix = matrix => {
-        if (!_isMatrix(matrix)) throw new Error('Must be a matrix');
-        if (!_isSquare(matrix)) throw new Error('Must be a square matrix');
+        if (!_isMatrix(matrix)) throw new Error(`Must be a matrix`);
+        if (!_isSquare(matrix)) throw new Error(`Must be a square matrix`);
         return true;
     }
     
